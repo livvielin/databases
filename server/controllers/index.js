@@ -7,9 +7,9 @@ module.exports = {
     get: function (req, res) {
       console.log('hi get message');
     }, // a function which handles a get request for all messages
-    post: function (req, res) {
+    post: function (req, res, callback) {
       console.log('hi post message');
-      models.messages.post(req.body.username, req.body.message, req.body.roomname);
+      callback(models.messages.post(req.body.username, req.body.message, req.body.roomname));
     } // a function which handles posting a message to the database
   },
 
@@ -18,9 +18,9 @@ module.exports = {
     get: function (req, res) {
       console.log('hi get users');
     },
-    post: function (req, res) {
-      // console.log('hi post user');
-      models.users.post(req.body.username);
+    post: function (req, res, callback) {
+      console.log('hi post user');
+      callback(models.users.post(req.body.username));
       // exports.messages.post(req, res);
     }
   }
